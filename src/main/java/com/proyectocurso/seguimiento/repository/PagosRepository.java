@@ -5,5 +5,5 @@ import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PagosRepository extends R2dbcRepository<Pagos, Long> {
+public interface PagosRepository extends R2dbcRepository<Pagos, Integer> {
 }

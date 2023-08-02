@@ -10,8 +10,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class Pagos {
     @Id
-    Long idPago;
-    Long idSuscriptor;
+    Integer idPago;
+    Integer idSuscriptor;
     Integer valorPago;
     Date fechaPago;
 }

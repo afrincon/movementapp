@@ -15,7 +15,7 @@ public class DatosSuscriptorService {
         this.datosSuscriptorRepository = datosSuscriptorRepository;
     }
 
-    public Mono<DatosSuscriptor> obtenerDatosSuscriptorById(@PathVariable Long id) {
+    public Mono<DatosSuscriptor> obtenerDatosSuscriptorById(@PathVariable Integer id) {
         return datosSuscriptorRepository.findById(id);
     }
 }

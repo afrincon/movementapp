@@ -22,7 +22,7 @@ public class SuscripcionService {
         return suscripcionRepositorio.findAll();
     }
 
-    public Mono<Suscripcion> obtenerSuscripcionById(Long id) {
+    public Mono<Suscripcion> obtenerSuscripcionById(Integer id) {
         return suscripcionRepositorio.findById(id);
     }
 

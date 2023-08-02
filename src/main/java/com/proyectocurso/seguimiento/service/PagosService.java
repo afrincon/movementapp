@@ -23,7 +23,7 @@ public class PagosService {
         return pagosRepository.findAll();
     }
 
-    public Mono<Pagos> consultarPagoById(Long id) {
+    public Mono<Pagos> consultarPagoById(Integer id) {
         return pagosRepository.findById(id);
     }
 

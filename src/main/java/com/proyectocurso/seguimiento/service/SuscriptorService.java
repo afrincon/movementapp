@@ -68,7 +68,7 @@ public class SuscriptorService {
                         "Suscriptores no borrados").getMostSpecificCause()));
     }
 
-    public Flux<Suscriptor> findByEstado(Boolean estado) {
+    public Flux<Suscriptor> obtenerByEstado(Boolean estado) {
         return suscriptorRepository.findByEstado(estado)
                 .onErrorResume(throwable -> {
                     logger.error("Error al buscar suscriptores con activo: " + estado, throwable);
@@ -76,5 +76,19 @@ public class SuscriptorService {
                 })
                 .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Suscriptores con activo=" + estado +" no encontrados").getMostSpecificCause()));
+    }
+
+    public Flux<Suscriptor> obtenerByNombreAndEstado(String nombre, Boolean estado) {
+        return suscriptorRepository.findByNombreAndEstado(nombre,estado)
+                .onErrorResume(throwable -> {
+                    logger.error("Error al buscar suscritor por nombre: " + nombre + " y estado " + estado, throwable);
+                    return Mono.empty();
+                })
+                .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Suscriptores con nombre=" + nombre +" y estado=" + estado + " no encontrados").getMostSpecificCause()));
+    }
+
+    protected Mono<Boolean> validaIdentificacionExiste(Suscriptor suscriptor) {
+        return Mono.just(true);
     }
 }

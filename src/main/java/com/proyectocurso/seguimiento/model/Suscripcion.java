@@ -12,8 +12,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class Suscripcion implements AccionesSuscripcion {
     @Id
-    private Long idSuscipcion;
-    private Long idSuscriptor;
+    private Integer idSuscipcion;
+    private Integer idSuscriptor;
     private Date fechaInicio;
     private Date fechaFinalizacion;
     private Boolean estado;

@@ -22,7 +22,7 @@ public class PagosController {
     }
 
     @GetMapping("/{id}")
-    public Mono<Pagos> consultarPagoByID(@PathVariable Long id) {
+    public Mono<Pagos> consultarPagoByID(@PathVariable Integer id) {
         return pagosService.consultarPagoById(id);
     }
 

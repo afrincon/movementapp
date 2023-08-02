@@ -1,5 +1,6 @@
 package com.proyectocurso.seguimiento.controller;
 
+import com.proyectocurso.seguimiento.dto.DTOSuscriptorNombreActivo;
 import com.proyectocurso.seguimiento.model.Suscriptor;
 import com.proyectocurso.seguimiento.service.SuscriptorService;
 import org.springframework.web.bind.annotation.*;
@@ -44,5 +45,20 @@ public class SuscriptorController {
     @DeleteMapping("/")
     public Mono<Void> eliminarSuscriptores() {
         return suscriptorService.eliminarSuscriptores();
+    }
+
+    @GetMapping("/suscriptores-activos")
+    public Flux<Suscriptor> obtenerSuscriptoresActivos(){
+        return suscriptorService.obtenerByEstado(Boolean.TRUE);
+    }
+
+    @GetMapping("/suscriptores-inactivos")
+    public Flux<Suscriptor> obtenerSuscriptoresInactivos(){
+        return suscriptorService.obtenerByEstado(Boolean.FALSE);
+    }
+
+    @PostMapping("/suscriptores-por-nombre-por-estado")
+    public Flux<Suscriptor> obtenerSuscriptoresByNombreByEstado(@RequestBody DTOSuscriptorNombreActivo dtoSuscriptorNombreActivo) {
+        return suscriptorService.obtenerByNombreAndEstado(dtoSuscriptorNombreActivo.nombre(), dtoSuscriptorNombreActivo.estado());
     }
 }

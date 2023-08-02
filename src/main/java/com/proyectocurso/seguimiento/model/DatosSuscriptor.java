@@ -12,7 +12,7 @@ import java.sql.Date;
 @NoArgsConstructor
 public class DatosSuscriptor {
     @Id
-    private Long id;
+    private Integer id;
     private Long idSuscriptor;
     private Date fecha;
     private Float peso;

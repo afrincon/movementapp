@@ -22,7 +22,7 @@ public class SuscripcionController {
     }
 
     @GetMapping("/{id}")
-    public Mono<Suscripcion> obtenerSuscripcionById(@PathVariable Long id){
+    public Mono<Suscripcion> obtenerSuscripcionById(@PathVariable Integer id){
         return suscripcionService.obtenerSuscripcionById(id);
     }
 
